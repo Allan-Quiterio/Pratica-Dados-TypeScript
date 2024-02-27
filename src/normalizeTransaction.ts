@@ -1,3 +1,5 @@
+import moedaParaNumero from "./coinToNumber.js";
+
 declare global {
   type FormaPagamento = "Cartão de Crédito" | "Boleto";
   type Status =
@@ -14,7 +16,7 @@ declare global {
     Status: Status;
     ["Cliente Novo"]: 0 | 1;
     ["Forma de Pagamento"]: FormaPagamento;
-    ["Valor (R$)"]: number;
+    ["Valor (R$)"]: string;
   }
 
   interface ITransacao {
@@ -38,7 +40,7 @@ export default function normalizarTransacao(transacao: ITransacaoApi) {
     nome: transacao.Nome,
     status: transacao.Status,
     moeda: transacao["Valor (R$)"],
-    valor: 0,
+    valor: moedaParaNumero(transacao["Valor (R$)"]),
     pagamento: transacao["Forma de Pagamento"],
     novo: Boolean(transacao["Cliente Novo"]),
   };

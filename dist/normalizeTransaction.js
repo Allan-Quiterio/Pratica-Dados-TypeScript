@@ -1,3 +1,4 @@
+import moedaParaNumero from "./coinToNumber.js";
 export default function normalizarTransacao(transacao) {
     return {
         data: transacao.Data,
@@ -6,7 +7,7 @@ export default function normalizarTransacao(transacao) {
         nome: transacao.Nome,
         status: transacao.Status,
         moeda: transacao["Valor (R$)"],
-        valor: 0,
+        valor: moedaParaNumero(transacao["Valor (R$)"]),
         pagamento: transacao["Forma de Pagamento"],
         novo: Boolean(transacao["Cliente Novo"]),
     };
