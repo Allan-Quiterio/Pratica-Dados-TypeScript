@@ -30,6 +30,10 @@ function preencherEstatisticas(transacoes) {
     }
     preencherLista(data.pagamento, "pagamentos");
     preencherLista(data.status, "status");
+    const melhorDia = document.getElementById("melhorDia");
+    if (melhorDia) {
+        melhorDia.innerHTML += data.melhorDia[0];
+    }
 }
 function preencherTabela(transacoes) {
     const tabela = document.querySelector("#transacoes tbody");

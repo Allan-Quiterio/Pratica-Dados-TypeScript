@@ -42,6 +42,12 @@ function preencherEstatisticas(transacoes: ITransacao[]): void {
 
   preencherLista(data.pagamento, "pagamentos");
   preencherLista(data.status, "status");
+
+  const melhorDia = document.getElementById("melhorDia");
+
+  if (melhorDia) {
+    melhorDia.innerHTML += data.melhorDia[0];
+  }
 }
 
 function preencherTabela(transacoes: ITransacao[]): void {
